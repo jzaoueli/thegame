@@ -1,6 +1,7 @@
 package test.java.dsl.model;
 
 import dsl.antlr.model.Bullet;
+import org.junit.Before;
 import org.junit.Test;
 import test.java.support.base.TestBase;
 
@@ -15,11 +16,13 @@ public class BulletTest extends TestBase {
 
     private Bullet bullet;
 
+    @Before
+    public void setUp(){
+       bullet = new Bullet(TEST_JAVA_FILE_NAME, 1, 2, 3, 4, 5, 6);
+    }
 
     @Test
     public void testParametrizedConstructor() {
-        bullet = new Bullet(TEST_JAVA_FILE_NAME, 1, 2, 3, 4, 5, 6);
-
         assertNotNull(bullet);
 
         assertEquals(bullet.getFileName(), TEST_JAVA_FILE_NAME);

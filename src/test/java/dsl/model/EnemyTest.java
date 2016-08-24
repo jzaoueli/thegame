@@ -1,6 +1,7 @@
 package test.java.dsl.model;
 
 import dsl.antlr.model.Enemy;
+import org.junit.Before;
 import org.junit.Test;
 import test.java.support.base.TestBase;
 
@@ -14,10 +15,13 @@ import static test.java.support.utils.Strings.TEST_JAVA_FILE_NAME;
 public class EnemyTest extends TestBase{
     private Enemy enemy;
 
+    @Before
+    public void setUp(){
+        enemy = new Enemy(null,TEST_JAVA_FILE_NAME,1,2,3,4,"vertical",5,6,7);
+    }
+
     @Test
     public void testParametrizedConstructor(){
-        enemy = new Enemy(null,TEST_JAVA_FILE_NAME,1,2,3,4,"vertical",5,6,7);
-
         assertNotNull(enemy);
 
         assertEquals(enemy.getFileName(),TEST_JAVA_FILE_NAME);

@@ -1,6 +1,7 @@
 package test.java.dsl.model;
 
 import dsl.antlr.model.Player;
+import org.junit.Before;
 import org.junit.Test;
 import test.java.support.base.TestBase;
 
@@ -14,10 +15,13 @@ import static test.java.support.utils.Strings.TEST_JAVA_FILE_NAME;
 public class PlayerTest extends TestBase{
     private Player player;
 
+    @Before
+    public void setUp() {
+        player = new Player(TEST_JAVA_FILE_NAME,1,2,3,4);
+    }
+
     @Test
     public void testParametrizedConstructor(){
-        player = new Player(TEST_JAVA_FILE_NAME,1,2,3,4);
-
         assertNotNull(player);
 
         assertEquals(player.getFileName(),TEST_JAVA_FILE_NAME);

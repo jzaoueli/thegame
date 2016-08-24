@@ -14,7 +14,6 @@ import static org.junit.Assert.assertThat;
 public class GeneratedBulletTest {
 
     private BulletNormal bullet;
-    private Object[] bulletObject;
 
     @Before
     public void setUp() {
@@ -24,7 +23,7 @@ public class GeneratedBulletTest {
     @Test
     public void testBulletNormal() {
         assertNotNull(bullet);
-        bulletObject = bullet.getBulletImage();
+        Object[] bulletObject = bullet.getBulletImage();
         assertThat((String) bulletObject[0], CoreMatchers.containsString(".png"));
     }
 

@@ -32,7 +32,6 @@ public class TestGame {
 
     private Player player;
 
-    private Object[] playerObject;
     private static ArrayList<Object[]> bulletClass;
     private static ArrayList<Object[]> enemyClass;
     private static ArrayList<Object[]> itemClass;
@@ -102,7 +101,7 @@ public class TestGame {
 
     private void givenGameObjects() throws IOException {
         //set up player
-        playerObject = new ImagePlayer().getPlayerImage();
+        Object[] playerObject = new ImagePlayer().getPlayerImage();
         player = new Player(playerObject);
 
         //set up bullet list

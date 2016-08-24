@@ -1,6 +1,7 @@
 package test.java.dsl.model;
 
 import dsl.antlr.model.Item;
+import org.junit.Before;
 import org.junit.Test;
 import test.java.support.base.TestBase;
 
@@ -14,10 +15,13 @@ import static test.java.support.utils.Strings.TEST_JAVA_FILE_NAME;
 public class ItemTest extends TestBase{
     private Item item;
 
+    @Before
+    public void setUp() {
+        item = new Item(null,TEST_JAVA_FILE_NAME,1,2,3,4,"My effect");
+    }
+
     @Test
     public void testParametrizedConstructor(){
-        item = new Item(null,TEST_JAVA_FILE_NAME,1,2,3,4,"My effect");
-
         assertNotNull(item);
 
         assertEquals(item.getFileName(),TEST_JAVA_FILE_NAME);

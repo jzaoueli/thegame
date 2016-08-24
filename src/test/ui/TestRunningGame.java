@@ -19,11 +19,11 @@ import static org.junit.Assert.assertTrue;
  * running the game and assert it stay running until to reach @DISTANCE_TO_TEST
  */
 public class TestRunningGame {
-    private static int DISTANCE_TO_TEST = 20;
-    private static int PLAYER_LIFE_POINT = 2000;
+    private static final int DISTANCE_TO_TEST = 20;
+    private static final int PLAYER_LIFE_POINT = 2000;
 
-    private static int RIGHT_BORDER = 320;
-    private static int LEFT_BORDER = 32;
+    private static final int RIGHT_BORDER = 320;
+    private static final int LEFT_BORDER = 32;
 
     @Before
     public void setUp() throws IOException {
