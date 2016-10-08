@@ -17,7 +17,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="antlr4-4.5.3" level="project" />
-    <orderEntry type="library" name="commons-io-2.5" level="project" />
+    <orderEntry type="library" name="org.antlr:antlr4:4.5" level="project" />
+    <orderEntry type="library" name="commons-io:commons-io:2.5" level="project" />
   </component>
 </module>
