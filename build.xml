@@ -50,7 +50,7 @@
 
     <target name="jar">
         <mkdir dir="./lib"/>
-        <jar destfile="./lib/antlr4-4.5.jar.jar" basedir="./build/classes">
+        <jar destfile="./lib/org.antlr:antlr4:4.5.jar" basedir="./build/classes">
             <manifest>
                 <attribute name="DependencyFinder" value="main"/>
             </manifest>
