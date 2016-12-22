@@ -48,6 +48,15 @@
         </copy>
     </target>
 
+    <target name="jar">
+        <mkdir dir="./lib"/>
+        <jar destfile="./lib/antlr4-4.5.jar.jar" basedir="./build/classes">
+            <manifest>
+                <attribute name="DependencyFinder" value="main"/>
+            </manifest>
+        </jar>
+    </target>
+
     <property name="project.classpath" value=""/>
     <target name="test" depends="compiletest" description="run the tests ">
         <junit printsummary="yes" fork="yes" haltonfailure="yes">
