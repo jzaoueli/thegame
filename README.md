@@ -1,5 +1,5 @@
 # the game
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5bb50f74a80b426cb2bab6d28af78406)](https://www.codacy.com/app/Yahima/SEProjekt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Yahima/SEProjekt&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/24dd621c14d5472b8acbc1929f6153ac)](https://www.codacy.com/app/jzaoueli/thegame?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jzaoueli/thegame&amp;utm_campaign=Badge_Grade)
 
 ##TODO
 
@@ -16,16 +16,3 @@
 - [ ] Labels
 
 ### Progress:
-
-### Done:
-- [x] Player Lifepoints
-- [x] Items
-- [x] Player controlling
-- [x] DSL
-- [x] 4000 LOC
-- [x] Testing
-- [x] Frame Animation
-- [x] Bullets
-- [x] Mulitple Enemy
-- [x] Collision Detection Bullet-Enemy
-- [x] Adjust Enemy State und Frames update
