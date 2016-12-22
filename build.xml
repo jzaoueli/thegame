@@ -11,7 +11,7 @@
     <!-- set directories -->
 
     <property name="src" location="src"/>
-    <property name="test" location="test"/>
+    <property name="test" location="src/test"/>
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
     <property name="lib" location="lib"/>
@@ -54,7 +54,7 @@
             <formatter type="plain"/>
             <batchtest fork="true">
                 <fileset dir="${test}">
-                    <include name="**/*Test*.java"/>
+                    <include name="**/*Spec*.java"/>
                 </fileset>
             </batchtest>
         </junit>
