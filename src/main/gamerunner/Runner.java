@@ -10,8 +10,10 @@ import main.model.Game;
 import main.model.Player;
 import main.view.GameGUI;
 import main.view.GamePanel;
+import main.view.GameStartWithScore;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -34,14 +36,17 @@ public class Runner {
     public static GamePanel gamePanel;
     public static Game game;
 
+    //TODO
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        setUpImageObject();
+        JFrame frame2 = new GameStartWithScore();
+        frame2.setVisible(true);
 
+        /*setUpImageObject();
         game = new Game(player, bulletClass, enemyClass, itemClass);
         gamePanel = new GamePanel(backgroundImage, game);
         gameGUI = new GameGUI(gamePanel);
-        game.play(gameGUI);
+        game.play(gameGUI);*/
     }
 
     private static void setUpImageObject() throws IOException {

@@ -13,6 +13,13 @@ import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements KeyListener {
 
+    // button to begin the Game
+    JButton startButton = new JButton("Start");
+    // button to show the high Score
+    JButton highScoreButton = new JButton("HighScore");
+
+
+
     public Player player;
 
     /**
@@ -150,6 +157,18 @@ public class GamePanel extends JPanel implements KeyListener {
 
         repaint();
     });
+
+
+    // added constructor without params
+    public GamePanel(){
+        // begin added start button and high score button
+        this.setLayout(null);
+        this.add(highScoreButton);
+        this.add(startButton);
+        this.startButton.setBounds(80,350,100,40);
+        this.highScoreButton.setBounds(200,350,100,40);
+        // end  added start button and high score button
+    }
 
     public GamePanel(BufferedImage backgroundImage, Game game) throws IOException {
 
