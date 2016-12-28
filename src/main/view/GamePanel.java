@@ -2,13 +2,18 @@ package main.view;
 
 import main.model.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static main.gamerunner.Runner.backgroundImage;
+import static main.gamerunner.Runner.setBackGround;
 
 
 public class GamePanel extends JPanel implements KeyListener {
@@ -16,7 +21,7 @@ public class GamePanel extends JPanel implements KeyListener {
     // button to begin the Game
     JButton startButton = new JButton("Start");
     // button to show the high Score
-    JButton highScoreButton = new JButton("HighScore");
+    JButton highScoreButton = new JButton("High Score");
 
 
 
@@ -160,14 +165,15 @@ public class GamePanel extends JPanel implements KeyListener {
 
 
     // added constructor without params
-    public GamePanel(){
-        // begin added start button and high score button
+    public GamePanel(BufferedImage backgroundImage) throws IOException {
         this.setLayout(null);
-        this.add(highScoreButton);
-        this.add(startButton);
-        this.startButton.setBounds(80,350,100,40);
+        this.backgroundImage = backgroundImage;
+        this.backgroundImageOff = backgroundImage;
+        this.backgroundY = 0;
         this.highScoreButton.setBounds(200,350,100,40);
-        // end  added start button and high score button
+        this.add(highScoreButton);
+        this.startButton.setBounds(80,350,100,40);
+        this.add(startButton);
     }
 
     public GamePanel(BufferedImage backgroundImage, Game game) throws IOException {
