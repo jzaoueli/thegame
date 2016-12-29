@@ -35,7 +35,7 @@ public class GameStartWithScore extends JFrame implements ActionListener {
         this.add(gameStartPanel);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                Runtime.getRuntime().exit(0);
             }
         });
     }
