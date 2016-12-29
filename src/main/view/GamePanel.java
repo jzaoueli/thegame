@@ -1,7 +1,6 @@
 package main.view;
 
 import main.model.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -12,6 +11,13 @@ import java.util.ArrayList;
 
 
 public class GamePanel extends JPanel implements KeyListener {
+
+    // button to begin the Game
+    JButton startButton = new JButton("Start");
+    // button to show the high Score
+    JButton highScoreButton = new JButton("High Score");
+
+
 
     public Player player;
 
@@ -57,7 +63,7 @@ public class GamePanel extends JPanel implements KeyListener {
     private int playerLifeValue;
     private String gameInfo = "";
     private Font dataFont = new Font("Monospaced", Font.PLAIN, 12);
-    private Font infoFont = new Font("Monospaced", Font.PLAIN, 20);
+    private Font infoFont = new Font("Monospaced", Font.PLAIN, 40);
 
     boolean isGameOver = false;
     /**
@@ -150,6 +156,19 @@ public class GamePanel extends JPanel implements KeyListener {
 
         repaint();
     });
+
+
+    // added constructor without params
+    public GamePanel(BufferedImage backgroundImage) throws IOException {
+        this.setLayout(null);
+        this.backgroundImage = backgroundImage;
+        this.backgroundImageOff = backgroundImage;
+        this.backgroundY = 0;
+        this.highScoreButton.setBounds(200,350,100,40);
+        this.add(highScoreButton);
+        this.startButton.setBounds(80,350,100,40);
+        this.add(startButton);
+    }
 
     public GamePanel(BufferedImage backgroundImage, Game game) throws IOException {
 
