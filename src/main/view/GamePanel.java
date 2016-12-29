@@ -1,19 +1,13 @@
 package main.view;
 
 import main.model.*;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static main.gamerunner.Runner.backgroundImage;
-import static main.gamerunner.Runner.setBackGround;
 
 
 public class GamePanel extends JPanel implements KeyListener {
@@ -69,7 +63,7 @@ public class GamePanel extends JPanel implements KeyListener {
     private int playerLifeValue;
     private String gameInfo = "";
     private Font dataFont = new Font("Monospaced", Font.PLAIN, 12);
-    private Font infoFont = new Font("Monospaced", Font.PLAIN, 20);
+    private Font infoFont = new Font("Monospaced", Font.PLAIN, 40);
 
     boolean isGameOver = false;
     /**

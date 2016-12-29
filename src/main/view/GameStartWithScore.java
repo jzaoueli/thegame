@@ -1,6 +1,5 @@
 package main.view;
 
-import main.gamerunner.Runner;
 import main.model.Game;
 
 import javax.imageio.ImageIO;
@@ -8,22 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.MemoryImageSource;
 import java.io.File;
 import java.io.IOException;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 import static main.gamerunner.Runner.*;
 
-/**
- * Created by user on 25/12/2016.
- */
-public class GameStartWithScore  extends JFrame implements ActionListener {
+public class GameStartWithScore extends JFrame implements ActionListener {
     /**
      * Background
      */
 
-    public static String startBackGroundFile = "images/gamelogo.jpg";
+    private static String startBackGroundFile = "images/gamelogo.jpg";
     private BufferedImage bgImage = ImageIO.read(new File(startBackGroundFile));
 
     private GamePanel gameStartPanel = new GamePanel(bgImage);
@@ -49,7 +43,7 @@ public class GameStartWithScore  extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == gameStartPanel.startButton){
+        if (e.getSource() == gameStartPanel.startButton) {
             this.setVisible(false);
             this.setEnabled(false);
             this.remove(gameStartPanel);
@@ -65,17 +59,13 @@ public class GameStartWithScore  extends JFrame implements ActionListener {
                 gameGUI = new GameGUI(gamePanel);
                 gameGUI.setVisible(true);
                 game.play(gameGUI);
-
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            } catch (InterruptedException e1) {
+            } catch (IOException | InterruptedException e1) {
                 e1.printStackTrace();
             }
-        }
-        else if (e.getSource() == gameStartPanel.highScoreButton){
+        } else if (e.getSource() == gameStartPanel.highScoreButton) {
             // TODO:  Hier we can read a file.txt compare the value inside and overwrite it (when we have new high score)
             int highScore = 111;
-            JOptionPane.showMessageDialog(null,"The High Score is: " + highScore );
+            JOptionPane.showMessageDialog(null, "The High Score is: " + highScore);
         }
     }
 
