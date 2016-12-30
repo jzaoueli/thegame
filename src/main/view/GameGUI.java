@@ -31,7 +31,7 @@ public class GameGUI extends JFrame {
     public GameGUI(GamePanel gamePanel) throws IOException, InterruptedException {
 
         setTitle("InfiniteFight");
-        setSize(new Dimension(384, 480));
+        setSize(new Dimension(400, 500));
         setResizable(false);
         setLocationRelativeTo(null);
 

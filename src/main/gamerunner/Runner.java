@@ -39,14 +39,17 @@ public class Runner {
     //TODO
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        JFrame frame2 = new GameStartWithScore();
-        frame2.setVisible(true);
+        //JFrame frame2 = new GameStartWithScore();
+        //frame2.setVisible(true);
+        starGame();
+    }
 
-        /*setUpImageObject();
+    public static void starGame() throws IOException, InterruptedException {
+        setUpImageObject();
         game = new Game(player, bulletClass, enemyClass, itemClass);
         gamePanel = new GamePanel(backgroundImage, game);
         gameGUI = new GameGUI(gamePanel);
-        game.play(gameGUI);*/
+        game.play(gameGUI);
     }
 
     private static void setUpImageObject() throws IOException {

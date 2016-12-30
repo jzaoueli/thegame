@@ -5,7 +5,7 @@ package main.generated.image;
  */
 public class ImageBackground {
 
-    private String fileName = "background.jpg";
+    private String fileName = "backgroundblue.png";
 
     public String getFileName() {
         return fileName;

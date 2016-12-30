@@ -1,6 +1,6 @@
 package main.view;
 
-import main.model.Game;
+import main.gamerunner.Runner;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -9,8 +9,6 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
-import static main.gamerunner.Runner.*;
 
 public class GameStartWithScore extends JFrame implements ActionListener {
     /**
@@ -49,16 +47,7 @@ public class GameStartWithScore extends JFrame implements ActionListener {
             this.remove(gameStartPanel);
 
             try {
-                setBackGround();
-                setPlayer();
-                setBullet();
-                setEnemy();
-                setItem();
-                game = new Game(player, bulletClass, enemyClass, itemClass);
-                gamePanel = new GamePanel(backgroundImage, game);
-                gameGUI = new GameGUI(gamePanel);
-                gameGUI.setVisible(true);
-                game.play(gameGUI);
+                Runner.starGame();
             } catch (IOException | InterruptedException e1) {
                 e1.printStackTrace();
             }
