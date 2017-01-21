@@ -23,7 +23,7 @@ public class GameStartWithScore extends JFrame implements ActionListener {
     private GamePanel gameStartPanel = new GamePanel(bgImage);
 
     public GameStartWithScore() throws IOException, InterruptedException {
-        setTitle("InfiniteFight");
+        setTitle("Naruto Fight");
         setMinimumSize(new Dimension(384, 480));
         setMaximumSize(new Dimension(384, 480));
         setLocationRelativeTo(null);

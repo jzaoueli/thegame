@@ -30,7 +30,7 @@ public class GameGUI extends JFrame {
 
     public GameGUI(GamePanel gamePanel) throws IOException, InterruptedException {
 
-        setTitle("InfiniteFight");
+        setTitle("Naruto Fight");
         setSize(new Dimension(400, 500));
         setResizable(false);
         setLocationRelativeTo(null);
