@@ -283,8 +283,7 @@ public class GamePanel extends JPanel implements KeyListener {
         if (isGameOver && e.getKeyCode() == KeyEvent.VK_ENTER) {
             this.setVisible(false);
             this.setEnabled(false);
-            Runner.gamePanel.removeAll();
-            Runner.frame2.dispose();
+            Runner.destroyGame();
             try {
                 Runner.starGame();
             } catch (IOException | InterruptedException e1) {
@@ -306,8 +305,7 @@ public class GamePanel extends JPanel implements KeyListener {
         if (isGameOver && e.getKeyCode() == KeyEvent.VK_ENTER) {
             this.setVisible(false);
             this.setEnabled(false);
-            Runner.gamePanel.removeAll();
-            Runner.frame2.dispose();
+            Runner.destroyGame();
             try {
                 Runner.starGame();
             } catch (IOException | InterruptedException e1) {

@@ -53,6 +53,10 @@ public class Runner {
         game.play(gameGUI);
     }
 
+    public static void destroyGame(){
+        gameGUI.dispose();
+    }
+
     private static void setUpImageObject() throws IOException {
         setBackGround();
         setPlayer();
