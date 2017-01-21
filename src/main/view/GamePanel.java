@@ -1,5 +1,6 @@
 package main.view;
 
+import main.gamerunner.Runner;
 import main.model.*;
 
 import javax.swing.*;
@@ -64,8 +65,9 @@ public class GamePanel extends JPanel implements KeyListener {
     public int distanceValue;
     private int playerLifeValue;
     private String gameInfo = "";
-    private Font dataFont = new Font("Monospaced", Font.PLAIN, 12);
-    private Font infoFont = new Font("Monospaced", Font.PLAIN, 40);
+    private String hint = "";
+    private Font dataFont = new Font("Monospaced", Font.PLAIN, 20);
+    private Font infoFont = new Font("Monospaced", Font.PLAIN, 60);
 
     boolean isGameOver = false;
     /**
@@ -105,6 +107,7 @@ public class GamePanel extends JPanel implements KeyListener {
             }
             isGameOver = true;
             gameInfo = "GAME OVER";
+            hint = "press ENTER to Replay";
             playerLifeValue = 0;
             player.getPlayerAnimation().setActionFrames(2);
             player.setMovement("down");
@@ -256,15 +259,15 @@ public class GamePanel extends JPanel implements KeyListener {
             g.drawImage(item.itemAnimation.frame, item.getX(), item.getY(), null);
         }
 
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.setFont(dataFont);
-        g.drawString(("SCORE: " + scoreValue), 35, 15);
-        g.drawString(("DISTANCE: " + distanceValue), 35, 35);
-        g.drawString(("LIFE: " + playerLifeValue), 35, 55);
+        g.drawString(("SCORE: " + scoreValue), 15, 25);
+        g.drawString(("DISTANCE: " + distanceValue), 15, 45);
+        g.drawString(("LIFE: " + playerLifeValue), 15, 65);
+        g.drawString(hint, 35, 340);
         g.setColor(Color.red);
         g.setFont(infoFont);
         g.drawString(gameInfo, 35, 240);
-
     }
 
     @Override
@@ -277,6 +280,17 @@ public class GamePanel extends JPanel implements KeyListener {
                 direction = "right";
             }
         }
+        if (isGameOver && e.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.setVisible(false);
+            this.setEnabled(false);
+            Runner.gamePanel.removeAll();
+            Runner.frame2.dispose();
+            try {
+                Runner.starGame();
+            } catch (IOException | InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -287,6 +301,17 @@ public class GamePanel extends JPanel implements KeyListener {
             }
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 direction = "right";
+            }
+        }
+        if (isGameOver && e.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.setVisible(false);
+            this.setEnabled(false);
+            Runner.gamePanel.removeAll();
+            Runner.frame2.dispose();
+            try {
+                Runner.starGame();
+            } catch (IOException | InterruptedException e1) {
+                e1.printStackTrace();
             }
         }
     }

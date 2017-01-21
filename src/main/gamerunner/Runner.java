@@ -35,11 +35,12 @@ public class Runner {
     public static GameGUI gameGUI;
     public static GamePanel gamePanel;
     public static Game game;
+    public static JFrame frame2;
 
     //TODO
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        JFrame frame2 = new GameStartWithScore();
+        frame2 = new GameStartWithScore();
         frame2.setVisible(true);
         //starGame();
     }
