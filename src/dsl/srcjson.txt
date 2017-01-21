@@ -3,10 +3,10 @@ ImageLogo{
 file:gamelogo.jpg
 }
 ImageBackground{
-file:background.jpg
+file:backgroundblue.png
 }
 ImagePlayer{
-file:player.png
+file:Naruto.png
 row:3
 column:4
 width:32
@@ -19,7 +19,7 @@ column:4
 width:12
 height:12
 attack:1
-speed:1
+speed:5
 }
 enemy
 CommonAttackEnemy{
