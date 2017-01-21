@@ -8,7 +8,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class GameStartWithScore extends JFrame implements ActionListener {
     /**
@@ -52,11 +54,18 @@ public class GameStartWithScore extends JFrame implements ActionListener {
                 e1.printStackTrace();
             }
         } else if (e.getSource() == gameStartPanel.highScoreButton) {
-            // TODO:  Hier we can read a file.txt compare the value inside and overwrite it (when we have new high score)
-            int highScore = 111;
+            int highScore = 0;
+            try {
+                highScore = Integer.parseInt(getHighScore());
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
             JOptionPane.showMessageDialog(null, "The High Score is: " + highScore);
         }
     }
 
+    public static String getHighScore() throws FileNotFoundException {
+        return new Scanner(new File("assets/score.txt")).useDelimiter("\\Z").next();
+    }
 
 }

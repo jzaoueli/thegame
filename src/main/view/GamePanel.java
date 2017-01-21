@@ -1,11 +1,14 @@
 package main.view;
 
 import main.model.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -16,7 +19,6 @@ public class GamePanel extends JPanel implements KeyListener {
     JButton startButton = new JButton("Start");
     // button to show the high Score
     JButton highScoreButton = new JButton("High Score");
-
 
 
     public Player player;
@@ -93,6 +95,14 @@ public class GamePanel extends JPanel implements KeyListener {
          * When Player dies Game Over
          */
         if (player.getLifePoints() <= 0) {
+            try {
+                int oldHighScore = Integer.parseInt(GameStartWithScore.getHighScore());
+                if (oldHighScore < scoreValue) {
+                    setHighScore(scoreValue);
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             isGameOver = true;
             gameInfo = "GAME OVER";
             playerLifeValue = 0;
@@ -157,6 +167,14 @@ public class GamePanel extends JPanel implements KeyListener {
         repaint();
     });
 
+    private void setHighScore(int score) throws IOException {
+        File file = new File("assets/score.txt");
+        FileWriter writer = new FileWriter(file);
+        writer.write("" + score);
+        writer.flush();
+        writer.close();
+    }
+
 
     // added constructor without params
     public GamePanel(BufferedImage backgroundImage) throws IOException {
@@ -164,9 +182,9 @@ public class GamePanel extends JPanel implements KeyListener {
         this.backgroundImage = backgroundImage;
         this.backgroundImageOff = backgroundImage;
         this.backgroundY = 0;
-        this.highScoreButton.setBounds(200,350,100,40);
+        this.highScoreButton.setBounds(200, 350, 100, 40);
         this.add(highScoreButton);
-        this.startButton.setBounds(80,350,100,40);
+        this.startButton.setBounds(80, 350, 100, 40);
         this.add(startButton);
     }
 

@@ -39,9 +39,9 @@ public class Runner {
     //TODO
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        //JFrame frame2 = new GameStartWithScore();
-        //frame2.setVisible(true);
-        starGame();
+        JFrame frame2 = new GameStartWithScore();
+        frame2.setVisible(true);
+        //starGame();
     }
 
     public static void starGame() throws IOException, InterruptedException {
