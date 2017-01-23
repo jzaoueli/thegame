@@ -31,11 +31,6 @@ public class FrameAnimation {
      */
     private int totalFrames;
 
-    /**
-     * Image Dimensions
-     */
-    private int rows;
-    private int cols;
     public int sizeX;
     public int sizeY;
 
@@ -99,36 +94,39 @@ public class FrameAnimation {
      * @throws IOException Image File
      */
     private BufferedImage[] loadFrames(Object[] imageData) throws IOException{
-        /**
-         * File name
+        /*
+          File name
          */
         String file = imageData[0].toString();
-        /**
-         * Number of Frame Rows in Image File
+        /*
+          Number of Frame Rows in Image File
          */
-        rows = (int) (imageData[1]);
-        /**
-         * Number of Frame Columns in Image File
+        /*
+      Image Dimensions
+     */
+        int rows = (int) (imageData[1]);
+        /*
+          Number of Frame Columns in Image File
          */
-        cols = (int) imageData[2];
-        /**
-         * Frame Width
+        int cols = (int) imageData[2];
+        /*
+          Frame Width
          */
         sizeX = (int) imageData[3];
-        /**
-         * Frame Height
+        /*
+          Frame Height
          */
         sizeY = (int) imageData[4];
-        /**
-         * Set Length of Array
+        /*
+          Set Length of Array
          */
         frames = new BufferedImage[rows * cols];
-        /**
-         * Read Image File
+        /*
+          Read Image File
          */
         BufferedImage spriteSheet = ImageIO.read(new File("images/"+file));
-        /**
-         * Divide Image into Frames
+        /*
+          Divide Image into Frames
          */
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {

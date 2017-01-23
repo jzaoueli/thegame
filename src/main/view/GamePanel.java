@@ -32,7 +32,6 @@ public class GamePanel extends JPanel implements KeyListener {
     private ArrayList<Enemy> aliveEnemy;
     private ArrayList<Item> leftItem;
     /**
-     * BACKGROUND
      * Background Image
      */
     private BufferedImage backgroundImage;
@@ -180,8 +179,6 @@ public class GamePanel extends JPanel implements KeyListener {
         writer.close();
     }
 
-
-    // added constructor without params
     GamePanel(BufferedImage backgroundImage) throws IOException {
         this.setLayout(null);
         this.backgroundImage = backgroundImage;
@@ -231,7 +228,6 @@ public class GamePanel extends JPanel implements KeyListener {
                 guiTimer.setDelay(guiTimer.getDelay() - 1);
             }
         }
-
 
         if(this.game != null){
             /*
@@ -284,16 +280,6 @@ public class GamePanel extends JPanel implements KeyListener {
             }
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 direction = "right";
-            }
-        }
-        if (isGameOver && e.getKeyCode() == KeyEvent.VK_ENTER) {
-            this.setVisible(false);
-            this.setEnabled(false);
-            Runner.destroyGame();
-            try {
-                Runner.starGame();
-            } catch (IOException | InterruptedException e1) {
-                e1.printStackTrace();
             }
         }
     }

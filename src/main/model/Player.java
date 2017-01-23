@@ -5,9 +5,6 @@ import main.view.FrameAnimation;
 import java.awt.*;
 import java.io.IOException;
 
-/**
- * Player TODO
- */
 public class Player{
 
     public FrameAnimation playerAnimation;
@@ -54,9 +51,6 @@ public class Player{
         this.lifePoints = lifePoints;
     }
 
-    private int getAction(){
-        return action;
-    }
     public void setAction(int action) {
         this.action = action;
     }

@@ -19,12 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * TODO Game Control
- * TODO Documentation
- */
 public class Runner {
-    private static String imageDirectory = "images/";
+    private static final String IMAGE_DIRECTORY = "images/";
     public static BufferedImage backgroundImage;
     public static Player player;
 
@@ -35,14 +31,11 @@ public class Runner {
     public static GameGUI gameGUI;
     public static GamePanel gamePanel;
     public static Game game;
-    public static JFrame frame2;
+    public static JFrame frame;
 
-    //TODO
     public static void main(String[] args) throws IOException, InterruptedException {
-
-        frame2 = new GameStartWithScore();
-        frame2.setVisible(true);
-        //starGame();
+        frame = new GameStartWithScore();
+        frame.setVisible(true);
     }
 
     public static void starGame() throws IOException, InterruptedException {
@@ -53,7 +46,7 @@ public class Runner {
         game.play(gameGUI);
     }
 
-    public static void destroyGame(){
+    public static void destroyGame() {
         gameGUI.dispose();
     }
 
@@ -107,7 +100,7 @@ public class Runner {
 
     public static void setBackGround() throws IOException {
         String backgroundImageFileName = new ImageBackground().getFileName();
-        File backgroundImageFile = new File(imageDirectory + backgroundImageFileName);
+        File backgroundImageFile = new File(IMAGE_DIRECTORY + backgroundImageFileName);
         backgroundImage = ImageIO.read(backgroundImageFile);
     }
 }

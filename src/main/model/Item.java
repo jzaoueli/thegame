@@ -5,9 +5,6 @@ import main.view.FrameAnimation;
 import java.awt.*;
 import java.io.IOException;
 
-/**
- * TODO: doc
- */
 public class Item {
 
     public FrameAnimation itemAnimation;
@@ -36,10 +33,6 @@ public class Item {
     public void setMovement(int x) {
         this.setY(this.getY() + x);
         this.setBoundingBox(new Rectangle(this.getX(), this.getY(), this.itemAnimation.sizeX, this.itemAnimation.sizeY));
-    }
-
-    public void activateEffect(){
-
     }
 
     public int getY() {

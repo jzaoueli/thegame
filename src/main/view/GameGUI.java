@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.*;
 import javax.sound.sampled.*;
 
-
 public class GameGUI extends JFrame {
 
     /**
@@ -47,8 +46,7 @@ public class GameGUI extends JFrame {
             }
         });
 
-        playAudio();//Play the file
-
+        playAudio();
     }
 
 
@@ -71,15 +69,17 @@ public class GameGUI extends JFrame {
                     (SourceDataLine) AudioSystem.getLine(
                             dataLineInfo);
 
-            //Create a thread to play back the data and
-            // start it running.  It will run until the
-            // end of file
-
+            /*
+             * Create a thread to play back the data and
+             * start it running.  It will run until the
+             * end of file
+             */
             new PlayThread().start();
+
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
-        }//end catch
+        }
     }
 
     static void stopAudio() {
@@ -97,8 +97,8 @@ public class GameGUI extends JFrame {
 
                 int cnt;
                 //Keep looping until the input read method
-                // returns -1 for empty stream
-                // while((cnt = audioInputStream.read(tempBuffer,0,tempBuffer.length)) != -1 )
+                //returns -1 for empty stream
+                //while((cnt = audioInputStream.read(tempBuffer,0,tempBuffer.length)) != -1 )
 
                 while ((cnt = audioInputStream.read(tempBuffer, 0, tempBuffer.length)) != -1) {
                     if (cnt > 0) {
@@ -108,18 +108,14 @@ public class GameGUI extends JFrame {
                         sourceDataLine.write(
                                 tempBuffer, 0, cnt);
                     }
-                }//end while
-                //Block and wait for internal buffer of the
-                // data line to empty.
+                }
                 sourceDataLine.drain();
                 sourceDataLine.close();
 
             } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(0);
-            }//end catch
-        }//end run
+            }
+        }
     }
-
-
 }

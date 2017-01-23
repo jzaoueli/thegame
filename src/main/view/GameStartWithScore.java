@@ -15,9 +15,6 @@ import java.util.Scanner;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class GameStartWithScore extends JFrame implements ActionListener {
-    /**
-     * Background
-     */
 
     private static String startBackGroundFile = "images/naruto3.png";
     private BufferedImage bgImage = ImageIO.read(new File(startBackGroundFile));

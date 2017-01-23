@@ -5,9 +5,6 @@ import main.view.FrameAnimation;
 import java.awt.*;
 import java.io.IOException;
 
-/**
- * TODO Documentation
- */
 public class Bullet {
 
     public FrameAnimation bulletAnimation;

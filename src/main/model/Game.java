@@ -9,7 +9,6 @@ import java.util.Iterator;
 
 /**
  * Game Logic
- * TODO Documentation
  */
 public class Game {
 
@@ -99,8 +98,8 @@ public class Game {
                     switch (randomItemType){
                         case 0:
                             try {
-                                /**
-                                 * Add Item on killed Enemy Coordinates
+                                /*
+                                  Add Item on killed Enemy Coordinates
                                  */
                                 leftItem.add(new Item(itemClass.get(0), enemy.getX(), enemy.getY()));
                             } catch (IOException e1) {
@@ -108,8 +107,8 @@ public class Game {
                             }
                         case 1:
                             try {
-                                /**
-                                 * Add Item on killed Enemy Coordinates
+                                /*
+                                  Add Item on killed Enemy Coordinates
                                  */
                                 leftItem.add(new Item(itemClass.get(1), enemy.getX(), enemy.getY()));
                             } catch (IOException e1) {

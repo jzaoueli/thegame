@@ -7,7 +7,6 @@ import java.io.IOException;
 
 /**
  * Enemy Class
- * TODO Documentation
  */
 public class Enemy {
 
@@ -47,11 +46,7 @@ public class Enemy {
 
     public Enemy(){
     }
-    /**
-     * TODO Documentation
-     * @param enemyData //TODO: docs
-     * @throws IOException
-     */
+
     public Enemy(Object[] enemyData, int startX) throws IOException {
         this.enemyAnimation = new FrameAnimation(enemyData, 8);
         this.enemyAnimation.setActionFrames(getState());
