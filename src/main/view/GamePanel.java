@@ -69,13 +69,13 @@ public class GamePanel extends JPanel implements KeyListener {
     private Font dataFont = new Font("Monospaced", Font.PLAIN, 20);
     private Font infoFont = new Font("Monospaced", Font.PLAIN, 60);
 
-    boolean isGameOver = false;
+    private boolean isGameOver = false;
     /**
      * GUI Timer
      * Animates Objects on Screen
      */
     private Timer guiTimer = new Timer(32, e -> {
-        /**
+        /*
          * Animate Background seamlessly
          */
         backgroundY++;
@@ -84,7 +84,7 @@ public class GamePanel extends JPanel implements KeyListener {
             backgroundY = 0;
         }
 
-        /**
+        /*
          * Animate Player
          * Move
          */
@@ -93,8 +93,8 @@ public class GamePanel extends JPanel implements KeyListener {
         player.getPlayerAnimation().setActionFrames(0);
         playerLifeValue = player.getLifePoints();
 
-        /**
-         * When Player dies Game Over
+        /*
+          When Player dies Game Over
          */
         if (player.getLifePoints() <= 0) {
             try {
@@ -115,18 +115,18 @@ public class GamePanel extends JPanel implements KeyListener {
             this.game.enemyTimer.stop();
         }
 
-        /**
-         * Animate Bullets
-         * Move Bullets
+        /*
+          Animate Bullets
+          Move Bullets
          */
         for (Bullet bullet : onScreenBullet) {
             bullet.setMovement();
             bullet.getBulletAnimation().animate();
         }
 
-        /**
-         * Animate Enemies
-         * Move Enemies
+        /*
+          Animate Enemies
+          Move Enemies
          */
         for (Enemy enemy : aliveEnemy) {
             for (Bullet bullet : onScreenBullet) {
@@ -154,7 +154,7 @@ public class GamePanel extends JPanel implements KeyListener {
             enemy.enemyAnimation.setActionFrames(0);
         }
 
-        /**
+        /*
          * Animate Items
          * Move Items
          */
@@ -180,7 +180,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
 
     // added constructor without params
-    public GamePanel(BufferedImage backgroundImage) throws IOException {
+    GamePanel(BufferedImage backgroundImage) throws IOException {
         this.setLayout(null);
         this.backgroundImage = backgroundImage;
         this.backgroundImageOff = backgroundImage;
@@ -213,7 +213,7 @@ public class GamePanel extends JPanel implements KeyListener {
     public void paint(Graphics g) {
         super.paint(g);
 
-        /**
+        /*
          * Increase game speed over time
          */
         stateGame += 1;
@@ -230,44 +230,47 @@ public class GamePanel extends JPanel implements KeyListener {
             }
         }
 
-        /**
-         * Draw Background seamlessly
-         */
-        g.drawImage(backgroundImage, 0, backgroundY, null);
-        g.drawImage(backgroundImageOff, 0, backgroundOffY, null);
-        /**
-         * Draw Player
-         */
-        g.drawImage(this.player.playerAnimation.frame, player.getX(), player.getY(), null);
-        /**
-         * Draw Bullets
-         */
-        for (Bullet bullet : onScreenBullet) {
-            g.drawImage(bullet.bulletAnimation.frame, bullet.getX(), bullet.getY(), null);
-        }
-        /**
-         * Draw Enemies
-         */
-        for (Enemy enemy : aliveEnemy) {
-            g.drawImage(enemy.enemyAnimation.frame, enemy.getX(), enemy.getY(), null);
+
+        if(this.game != null){
+            /*
+             * Draw Background seamlessly
+             */
+            g.drawImage(backgroundImage, 0, backgroundY, null);
+            g.drawImage(backgroundImageOff, 0, backgroundOffY, null);
+            /*
+             * Draw Player
+             */
+            g.drawImage(this.player.playerAnimation.frame, player.getX(), player.getY(), null);
+            /*
+             * Draw Bullets
+             */
+            for (Bullet bullet : onScreenBullet) {
+                g.drawImage(bullet.bulletAnimation.frame, bullet.getX(), bullet.getY(), null);
+            }
+            /*
+             * Draw Enemies
+             */
+            for (Enemy enemy : aliveEnemy) {
+                g.drawImage(enemy.enemyAnimation.frame, enemy.getX(), enemy.getY(), null);
+            }
+
+            /*
+             * Draw Items
+             */
+            for (Item item : leftItem) {
+                g.drawImage(item.itemAnimation.frame, item.getX(), item.getY(), null);
+            }
+            g.setColor(Color.black);
+            g.setFont(dataFont);
+            g.drawString(("SCORE: " + scoreValue), 15, 25);
+            g.drawString(("DISTANCE: " + distanceValue), 15, 45);
+            g.drawString(("LIFE: " + playerLifeValue), 15, 65);
+            g.drawString(hint, 35, 340);
+            g.setColor(Color.red);
+            g.setFont(infoFont);
+            g.drawString(gameInfo, 35, 240);
         }
 
-        /**
-         * Draw Items
-         */
-        for (Item item : leftItem) {
-            g.drawImage(item.itemAnimation.frame, item.getX(), item.getY(), null);
-        }
-
-        g.setColor(Color.black);
-        g.setFont(dataFont);
-        g.drawString(("SCORE: " + scoreValue), 15, 25);
-        g.drawString(("DISTANCE: " + distanceValue), 15, 45);
-        g.drawString(("LIFE: " + playerLifeValue), 15, 65);
-        g.drawString(hint, 35, 340);
-        g.setColor(Color.red);
-        g.setFont(infoFont);
-        g.drawString(gameInfo, 35, 240);
     }
 
     @Override
@@ -306,6 +309,7 @@ public class GamePanel extends JPanel implements KeyListener {
             this.setVisible(false);
             this.setEnabled(false);
             Runner.destroyGame();
+            GameGUI.stopAudio();
             try {
                 Runner.starGame();
             } catch (IOException | InterruptedException e1) {
