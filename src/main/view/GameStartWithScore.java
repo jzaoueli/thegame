@@ -12,12 +12,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class GameStartWithScore extends JFrame implements ActionListener {
     /**
      * Background
      */
 
-    private static String startBackGroundFile = "images/gamelogo.jpg";
+    private static String startBackGroundFile = "images/naruto3.png";
     private BufferedImage bgImage = ImageIO.read(new File(startBackGroundFile));
 
     private GamePanel gameStartPanel = new GamePanel(bgImage);
@@ -40,6 +42,25 @@ public class GameStartWithScore extends JFrame implements ActionListener {
         });
     }
 
+    public void paint(Graphics g) {
+        super.paint(g);
+
+        g.drawImage(bgImage, 0, 0, null);
+
+        g.setColor(Color.black);
+        g.setFont(new Font("SansSerif", Font.CENTER_BASELINE, 50));
+        g.drawString("Naruto Fight", 50, 60);
+
+        g.setColor(Color.red);
+        g.setFont(new Font("Serif", Font.PLAIN, 20));
+        g.drawString("ARE", 15, 100);
+        g.drawString("YOU", 15, 120);
+        g.drawString("READY ", 15, 140);
+        g.drawString("TO ", 15, 160);
+        g.drawString("FIGHT ", 15, 180);
+        g.drawString("? ", 15, 200);
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -60,11 +81,12 @@ public class GameStartWithScore extends JFrame implements ActionListener {
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null, "The High Score is: " + highScore);
+            showMessageDialog(null,
+                    "The High Score is: " + highScore, "high score", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
-    public static String getHighScore() throws FileNotFoundException {
+    static String getHighScore() throws FileNotFoundException {
         return new Scanner(new File("assets/score.txt")).useDelimiter("\\Z").next();
     }
 
