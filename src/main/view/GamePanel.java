@@ -65,7 +65,8 @@ public class GamePanel extends JPanel implements KeyListener {
     public int distanceValue;
     private int playerLifeValue;
     private String gameInfo = "";
-    private String hint = "";
+    private String hintRestart = "";
+    private String hintExit = "";
     private Font dataFont = new Font("Monospaced", Font.PLAIN, 20);
     private Font infoFont = new Font("Monospaced", Font.PLAIN, 60);
 
@@ -107,7 +108,8 @@ public class GamePanel extends JPanel implements KeyListener {
             }
             isGameOver = true;
             gameInfo = "GAME OVER";
-            hint = "press ENTER to Replay";
+            hintRestart = "press ENTER to replay,";
+            hintExit = "or SPACE to go to start screen";
             playerLifeValue = 0;
             player.getPlayerAnimation().setActionFrames(2);
             player.setMovement("down");
@@ -265,7 +267,8 @@ public class GamePanel extends JPanel implements KeyListener {
             g.drawString(("SCORE: " + scoreValue), 15, 25);
             g.drawString(("DISTANCE: " + distanceValue), 15, 45);
             g.drawString(("LIFE: " + playerLifeValue), 15, 65);
-            g.drawString(hint, 35, 340);
+            g.drawString(hintRestart, 20, 340);
+            g.drawString(hintExit, 20, 380);
             g.setColor(Color.red);
             g.setFont(infoFont);
             g.drawString(gameInfo, 35, 240);
@@ -305,13 +308,18 @@ public class GamePanel extends JPanel implements KeyListener {
                 direction = "right";
             }
         }
-        if (isGameOver && e.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (isGameOver && (e.getKeyCode() == KeyEvent.VK_ENTER) || e.getKeyCode()== KeyEvent.VK_SPACE) {
             this.setVisible(false);
             this.setEnabled(false);
             Runner.destroyGame();
             GameGUI.stopAudio();
             try {
-                Runner.starGame();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    Runner.starGame();
+                }else if(e.getKeyCode()== KeyEvent.VK_SPACE){
+                    Runner.main(null);
+                }
+
             } catch (IOException | InterruptedException e1) {
                 e1.printStackTrace();
             }
