@@ -53,7 +53,7 @@ public class GameGUI extends JFrame {
     private void playAudio() {
         try {
 
-            String soundPath = "sound/battle.au";
+            String soundPath = "sound/naruto.au";
             File soundFile =
                     new File(soundPath);
             audioInputStream = AudioSystem.
