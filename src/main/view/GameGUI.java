@@ -1,9 +1,5 @@
 package main.view;
 
-/**
- * TODO Documentation
- */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -20,10 +16,9 @@ public class GameGUI extends JFrame {
     /**
      * Sound parameters
      */
-    AudioFormat audioFormat;
-    AudioInputStream audioInputStream;
-    SourceDataLine sourceDataLine;
-    String  soundPath = "sound/battle.au";
+    static AudioFormat audioFormat;
+    static AudioInputStream audioInputStream;
+    static SourceDataLine sourceDataLine;
     /*
     End Sound parameters
     */
@@ -52,17 +47,15 @@ public class GameGUI extends JFrame {
             }
         });
 
-        /**
-         *  Sound
-         */
-         playAudio();//Play the file
+        playAudio();//Play the file
 
     }
 
 
     private void playAudio() {
-        try{
+        try {
 
+            String soundPath = "sound/battle.au";
             File soundFile =
                     new File(soundPath);
             audioInputStream = AudioSystem.
@@ -75,7 +68,7 @@ public class GameGUI extends JFrame {
                             audioFormat);
 
             sourceDataLine =
-                    (SourceDataLine)AudioSystem.getLine(
+                    (SourceDataLine) AudioSystem.getLine(
                             dataLineInfo);
 
             //Create a thread to play back the data and
@@ -83,29 +76,32 @@ public class GameGUI extends JFrame {
             // end of file
 
             new PlayThread().start();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
         }//end catch
-    }//end playAudio
+    }
+
+    static void stopAudio() {
+        sourceDataLine.close();
+    }
 
     //Inner class to play back the data from the audio file.
-    class PlayThread extends Thread{
+    static class PlayThread extends Thread {
         byte tempBuffer[] = new byte[10000];
 
-        public void run(){
-            try{
+        public void run() {
+            try {
                 sourceDataLine.open(audioFormat);
                 sourceDataLine.start();
 
                 int cnt;
                 //Keep looping until the input read method
                 // returns -1 for empty stream
-               // while((cnt = audioInputStream.read(tempBuffer,0,tempBuffer.length)) != -1 )
+                // while((cnt = audioInputStream.read(tempBuffer,0,tempBuffer.length)) != -1 )
 
-                while((cnt = audioInputStream.read(tempBuffer,0,tempBuffer.length)) != -1 )
-                {
-                    if(cnt > 0){
+                while ((cnt = audioInputStream.read(tempBuffer, 0, tempBuffer.length)) != -1) {
+                    if (cnt > 0) {
                         //Write data to the internal buffer of
                         // the data line where it will be
                         // delivered to the speaker.
@@ -118,12 +114,12 @@ public class GameGUI extends JFrame {
                 sourceDataLine.drain();
                 sourceDataLine.close();
 
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(0);
             }//end catch
         }//end run
-    }//end inner class PlayThread
+    }
 
 
 }
