@@ -3,15 +3,19 @@ package test.ui;
 import main.model.Game;
 import main.view.GameGUI;
 import main.view.GamePanel;
+import main.view.GameStartWithScore;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
 import static java.lang.Thread.sleep;
 import static main.gamerunner.Runner.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -19,11 +23,13 @@ import static org.junit.Assert.assertTrue;
  * running the game and assert it stay running until to reach @DISTANCE_TO_TEST
  */
 public class TestRunningGame {
-    private static final int DISTANCE_TO_TEST = 20;
+    private static final int DISTANCE_TO_TEST = 10;
     private static final int PLAYER_LIFE_POINT = 2000;
 
     private static final int RIGHT_BORDER = 320;
     private static final int LEFT_BORDER = 32;
+
+    private JFrame frame;
 
     @Before
     public void setUp() throws IOException {
@@ -31,7 +37,7 @@ public class TestRunningGame {
     }
 
     @Test
-    public void testRunMain() throws IOException, InterruptedException {
+    public void testRunGame() throws IOException, InterruptedException {
         whenStartGame();
         thenGUIRunning();
 
@@ -45,6 +51,17 @@ public class TestRunningGame {
 
             thenGUIRunning();
         }
+
+        //Testing Start Screen After testing game
+        assertNull(frame);
+        whenStartScreen();
+        assertNotNull(frame);
+    }
+
+    private void whenStartScreen() throws InterruptedException, IOException {
+        frame = new GameStartWithScore();
+        frame.setVisible(true);
+        sleep(2000);
     }
 
     private void setBackground() throws IOException {
