@@ -23,6 +23,7 @@ import static org.junit.Assert.assertTrue;
  * running the game and assert it stay running until to reach @DISTANCE_TO_TEST
  */
 public class TestRunningGame {
+
     private static final int DISTANCE_TO_TEST = 10;
     private static final int PLAYER_LIFE_POINT = 2000;
 
@@ -51,8 +52,10 @@ public class TestRunningGame {
 
             thenGUIRunning();
         }
+    }
 
-        //Testing Start Screen After testing game
+    @Test
+    public void testStarScreen() throws IOException, InterruptedException {
         assertNull(frame);
         whenStartScreen();
         assertNotNull(frame);
