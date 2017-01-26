@@ -6,7 +6,7 @@ ImageBackground{
 file:backgroundblue.png
 }
 ImagePlayer{
-file:Naruto.png
+file:naruto.png
 row:3
 column:4
 width:32

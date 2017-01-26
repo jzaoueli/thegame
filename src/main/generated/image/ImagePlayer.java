@@ -5,7 +5,7 @@ package main.generated.image;
  */
 public class ImagePlayer {
 
-    private String fileName = "player.png";
+    private String fileName = "naruto.png";
     private int numberLine = 3;
     private int numberColumn = 4;
     private int width = 32;
